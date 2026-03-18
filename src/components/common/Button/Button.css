@@ -1,0 +1,471 @@
+/* ============================================
+   Button Component Styles
+   Premium button with animations
+   ============================================ */
+
+/* ============================================
+   1. BASE BUTTON STYLES
+   ============================================ */
+
+.btn {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  
+  /* Sizing */
+  padding: var(--space-3) var(--space-6);
+  min-height: 48px;
+  
+  /* Typography */
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  
+  /* Appearance */
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  
+  /* Positioning */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  
+  /* Transitions */
+  transition: 
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+  
+  /* Performance */
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus state */
+.btn:focus-visible {
+  outline: 2px solid var(--gold-primary);
+  outline-offset: 3px;
+}
+
+/* Hover lift effect */
+.btn:hover:not(.btn--disabled):not(.btn--loading) {
+  transform: translateY(-2px);
+}
+
+/* Active press effect */
+.btn:active:not(.btn--disabled):not(.btn--loading) {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ============================================
+   2. BUTTON VARIANTS
+   ============================================ */
+
+/* Primary (Gold gradient) */
+.btn--primary {
+  background: var(--gradient-gold);
+  color: var(--black-primary);
+  border-color: transparent;
+  box-shadow: var(--shadow-gold-sm);
+}
+
+.btn--primary:hover:not(.btn--disabled) {
+  box-shadow: var(--shadow-gold);
+}
+
+/* Secondary */
+.btn--secondary {
+  background: var(--black-secondary);
+  color: var(--white-primary);
+  border-color: var(--glass-border);
+}
+
+.btn--secondary:hover:not(.btn--disabled) {
+  background: var(--black-tertiary);
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+}
+
+/* Outline */
+.btn--outline {
+  background: transparent;
+  color: var(--gold-primary);
+  border-color: var(--gold-primary);
+}
+
+.btn--outline:hover:not(.btn--disabled) {
+  background: var(--gold-primary);
+  color: var(--black-primary);
+}
+
+/* Ghost */
+.btn--ghost {
+  background: transparent;
+  color: var(--white-primary);
+  border-color: transparent;
+}
+
+.btn--ghost:hover:not(.btn--disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--gold-primary);
+}
+
+/* Gold solid */
+.btn--gold {
+  background: var(--gold-primary);
+  color: var(--black-primary);
+  border-color: var(--gold-primary);
+}
+
+.btn--gold:hover:not(.btn--disabled) {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  box-shadow: var(--shadow-gold);
+}
+
+/* White */
+.btn--white {
+  background: var(--white-primary);
+  color: var(--black-primary);
+  border-color: var(--white-primary);
+}
+
+.btn--white:hover:not(.btn--disabled) {
+  background: var(--white-cream);
+  border-color: var(--white-cream);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Dark */
+.btn--dark {
+  background: var(--black-primary);
+  color: var(--white-primary);
+  border-color: var(--black-primary);
+}
+
+.btn--dark:hover:not(.btn--disabled) {
+  background: var(--black-secondary);
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+}
+
+/* Glass morphism */
+.btn--glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--white-primary);
+  border-color: var(--glass-border);
+}
+
+.btn--glass:hover:not(.btn--disabled) {
+  background: var(--glass-bg-gold);
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  box-shadow: var(--shadow-glow-sm);
+}
+
+/* ============================================
+   3. BUTTON SIZES
+   ============================================ */
+
+.btn--small {
+  padding: var(--space-2) var(--space-4);
+  min-height: 36px;
+  font-size: var(--text-xs);
+  gap: var(--space-1);
+}
+
+.btn--medium {
+  padding: var(--space-3) var(--space-6);
+  min-height: 48px;
+  font-size: var(--text-sm);
+}
+
+.btn--large {
+  padding: var(--space-4) var(--space-8);
+  min-height: 56px;
+  font-size: var(--text-base);
+  gap: var(--space-3);
+}
+
+.btn--xlarge {
+  padding: var(--space-5) var(--space-10);
+  min-height: 64px;
+  font-size: var(--text-lg);
+  gap: var(--space-3);
+}
+
+/* ============================================
+   4. BUTTON STATES
+   ============================================ */
+
+/* Full width */
+.btn--full-width {
+  width: 100%;
+}
+
+/* Disabled */
+.btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading */
+.btn--loading {
+  cursor: wait;
+  pointer-events: none;
+}
+
+.btn--loading .btn__text,
+.btn--loading .btn__icon {
+  opacity: 0;
+}
+
+/* Icon only */
+.btn--icon-only {
+  padding: var(--space-3);
+  min-width: 48px;
+  aspect-ratio: 1;
+}
+
+.btn--icon-only.btn--small {
+  min-width: 36px;
+  padding: var(--space-2);
+}
+
+.btn--icon-only.btn--large {
+  min-width: 56px;
+  padding: var(--space-4);
+}
+
+/* ============================================
+   5. BUTTON ELEMENTS
+   ============================================ */
+
+/* Text */
+.btn__text {
+  position: relative;
+  z-index: 2;
+  transition: transform var(--transition-fast);
+}
+
+.btn:hover:not(.btn--disabled) .btn__text {
+  transform: translateX(2px);
+}
+
+/* Icon */
+.btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  transition: transform var(--transition-fast);
+}
+
+.btn__icon svg {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.btn__icon--left svg {
+  width: 1em;
+  height: 1em;
+}
+
+.btn__icon--right svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* Icon hover animations */
+.btn:hover:not(.btn--disabled) .btn__icon--right {
+  transform: translateX(4px);
+}
+
+.btn:hover:not(.btn--disabled) .btn__icon--left {
+  transform: translateX(-2px);
+}
+
+/* ============================================
+   6. LOADING SPINNER
+   ============================================ */
+
+.btn__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.btn__spinner-icon {
+  width: 20px;
+  height: 20px;
+  animation: preloaderSpin 1s linear infinite;
+}
+
+.btn--large .btn__spinner-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   7. RIPPLE EFFECT
+   ============================================ */
+
+.btn__ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.btn:active:not(.btn--disabled) .btn__ripple {
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+}
+
+/* ============================================
+   8. SHINE EFFECT
+   ============================================ */
+
+.btn__shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn:hover:not(.btn--disabled) .btn__shine {
+  animation: buttonShine 0.75s ease forwards;
+}
+
+@keyframes buttonShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Shine effect for primary/gold buttons */
+.btn--primary .btn__shine,
+.btn--gold .btn__shine {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+}
+
+/* ============================================
+   9. ARROW ICON ANIMATION (Common pattern)
+   ============================================ */
+
+.btn__arrow {
+  display: inline-flex;
+  align-items: center;
+  transition: transform var(--transition-fast);
+}
+
+.btn__arrow svg {
+  width: 1em;
+  height: 1em;
+}
+
+.btn:hover:not(.btn--disabled) .btn__arrow {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   10. RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .btn {
+    min-height: 44px;
+    padding: var(--space-3) var(--space-5);
+  }
+
+  .btn--large {
+    min-height: 52px;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-sm);
+  }
+
+  .btn--xlarge {
+    min-height: 56px;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+  }
+}
+
+/* Touch device adjustments */
+@media (hover: none) {
+  .btn:hover:not(.btn--disabled) {
+    transform: none;
+  }
+
+  .btn:active:not(.btn--disabled) {
+    transform: scale(0.98);
+  }
+
+  .btn:hover:not(.btn--disabled) .btn__shine {
+    animation: none;
+  }
+}
+
+/* ============================================
+   11. DARK/LIGHT SECTION VARIANTS
+   ============================================ */
+
+/* Button on light background */
+.section--light .btn--outline {
+  color: var(--black-primary);
+  border-color: var(--black-primary);
+}
+
+.section--light .btn--outline:hover:not(.btn--disabled) {
+  background: var(--black-primary);
+  color: var(--white-primary);
+}
+
+.section--light .btn--ghost {
+  color: var(--black-primary);
+}
+
+.section--light .btn--ghost:hover:not(.btn--disabled) {
+  background: rgba(0, 0, 0, 0.1);
+}

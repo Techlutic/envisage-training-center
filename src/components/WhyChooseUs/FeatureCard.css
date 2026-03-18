@@ -1,0 +1,393 @@
+/* ============================================
+   FeatureCard Component Styles
+   ============================================ */
+
+/* ============================================
+   1. BASE CARD
+   ============================================ */
+
+.feature-card {
+  position: relative;
+  padding: var(--space-8);
+  background: var(--black-secondary);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-medium);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+/* ============================================
+   2. SPOTLIGHT EFFECT
+   ============================================ */
+
+.feature-card__spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    600px circle at var(--mouse-x) var(--mouse-y),
+    rgba(201, 168, 108, 0.08) 0%,
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.feature-card.is-hovered .feature-card__spotlight {
+  opacity: 1;
+}
+
+/* ============================================
+   3. BORDER
+   ============================================ */
+
+.feature-card__border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--glass-border);
+  transition: border-color var(--transition-fast);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.feature-card:hover .feature-card__border {
+  border-color: var(--card-color, var(--gold-primary));
+}
+
+/* Gradient border on hover */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    135deg,
+    var(--card-color, var(--gold-primary)) 0%,
+    transparent 50%,
+    var(--card-color, var(--gold-primary)) 100%
+  );
+  border-radius: calc(var(--radius-2xl) + 2px);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity var(--transition-medium);
+}
+
+.feature-card:hover::before {
+  opacity: 0.5;
+}
+
+/* ============================================
+   4. CONTENT
+   ============================================ */
+
+.feature-card__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================
+   5. HEADER
+   ============================================ */
+
+.feature-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+}
+
+/* Icon */
+.feature-card__icon {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  color: var(--card-color, var(--gold-primary));
+  transition: 
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.feature-card:hover .feature-card__icon {
+  background: var(--card-color, var(--gold-primary));
+  border-color: var(--card-color, var(--gold-primary));
+  color: var(--black-primary);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.feature-card__icon svg {
+  width: 32px;
+  height: 32px;
+  transition: transform var(--transition-fast);
+}
+
+.feature-card__icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: var(--card-color, var(--gold-primary));
+  border-radius: inherit;
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity var(--transition-medium);
+  z-index: -1;
+}
+
+.feature-card:hover .feature-card__icon-glow {
+  opacity: 0.4;
+}
+
+/* Stats */
+.feature-card__stats {
+  text-align: right;
+}
+
+.feature-card__stats-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--card-color, var(--gold-primary));
+  line-height: 1;
+}
+
+.feature-card__stats-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--gray-500);
+  margin-top: var(--space-1);
+}
+
+/* ============================================
+   6. TITLE & DESCRIPTION
+   ============================================ */
+
+.feature-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--fw-bold);
+  color: var(--white-primary);
+  margin-bottom: var(--space-3);
+  transition: color var(--transition-fast);
+}
+
+.feature-card:hover .feature-card__title {
+  color: var(--card-color, var(--gold-primary));
+}
+
+.feature-card__description {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--gray-400);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+/* ============================================
+   7. FEATURES LIST
+   ============================================ */
+
+.feature-card__features {
+  list-style: none;
+  margin: 0 0 var(--space-6);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.feature-card__features li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--gray-300);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--glass-border);
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: featureReveal 0.5s ease forwards;
+  animation-delay: calc(0.1s * var(--feature-index) + 0.3s);
+}
+
+@keyframes featureReveal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.feature-card__features li:last-child {
+  border-bottom: none;
+}
+
+.feature-card__features svg {
+  width: 16px;
+  height: 16px;
+  color: var(--card-color, var(--gold-primary));
+  flex-shrink: 0;
+}
+
+/* ============================================
+   8. LEARN MORE LINK
+   ============================================ */
+
+.feature-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--card-color, var(--gold-primary));
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.feature-card__link:hover {
+  color: var(--white-primary);
+}
+
+.feature-card__link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.feature-card__link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   9. DECORATIVE NUMBER
+   ============================================ */
+
+.feature-card__number {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  font-family: var(--font-heading);
+  font-size: var(--text-6xl);
+  font-weight: var(--fw-bold);
+  color: rgba(255, 255, 255, 0.02);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+  transition: color var(--transition-medium);
+}
+
+.feature-card:hover .feature-card__number {
+  color: rgba(201, 168, 108, 0.05);
+}
+
+/* ============================================
+   10. RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .feature-card {
+    padding: var(--space-6);
+  }
+
+  .feature-card__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .feature-card__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .feature-card__title {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-card:hover {
+    transform: none;
+  }
+
+  .feature-card__header {
+    margin-bottom: var(--space-4);
+  }
+
+  .feature-card__icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feature-card__icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .feature-card__stats-value {
+    font-size: var(--text-xl);
+  }
+
+  .feature-card__number {
+    font-size: var(--text-5xl);
+  }
+
+  .feature-card__features li {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================
+   11. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .feature-card__spotlight,
+  .feature-card__border,
+  .feature-card::before,
+  .feature-card__icon,
+  .feature-card__icon-glow,
+  .feature-card__title,
+  .feature-card__link svg,
+  .feature-card__number {
+    transition: none;
+  }
+
+  .feature-card:hover {
+    transform: none;
+  }
+
+  .feature-card__features li {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

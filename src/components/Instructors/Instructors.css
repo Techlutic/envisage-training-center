@@ -1,0 +1,371 @@
+/* ============================================
+   Instructors Component Styles
+   ============================================ */
+
+/* ============================================
+   1. BASE SECTION
+   ============================================ */
+
+.instructors {
+  position: relative;
+  background: var(--black-primary);
+  overflow: hidden;
+}
+
+/* ============================================
+   2. BACKGROUND
+   ============================================ */
+
+.instructors__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.instructors__bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--black-primary) 0%,
+    var(--black-secondary) 50%,
+    var(--black-primary) 100%
+  );
+}
+
+.instructors__bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  background-image: radial-gradient(
+    rgba(201, 168, 108, 0.3) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+}
+
+/* ============================================
+   3. CONTAINER
+   ============================================ */
+
+.instructors__container {
+  position: relative;
+  z-index: 1;
+  width: var(--container-full);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* ============================================
+   4. INSTRUCTORS GRID
+   ============================================ */
+
+.instructors__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-12);
+}
+
+/* ============================================
+   5. EXPERTISE MARQUEE
+   ============================================ */
+
+.instructors__expertise {
+  margin-top: var(--space-16);
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--glass-border);
+  overflow: hidden;
+}
+
+.instructors__expertise-label {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--gold-primary);
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.instructors__expertise-marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    white 10%,
+    white 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    white 10%,
+    white 90%,
+    transparent
+  );
+}
+
+.instructors__expertise-track {
+  display: flex;
+  gap: var(--space-8);
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.instructors__expertise-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--fw-medium);
+  color: var(--gray-500);
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.instructors__expertise-item:hover {
+  color: var(--gold-primary);
+}
+
+.instructors__expertise-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--gold-primary);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* ============================================
+   6. STATS BAR
+   ============================================ */
+
+.instructors__stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+  padding: var(--space-8);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+}
+
+.instructors__stat {
+  text-align: center;
+}
+
+.instructors__stat-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--gold-primary);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.instructors__stat-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--gray-400);
+}
+
+.instructors__stat-divider {
+  width: 1px;
+  height: 50px;
+  background: var(--glass-border);
+}
+
+/* ============================================
+   7. CTA
+   ============================================ */
+
+.instructors__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-12);
+}
+
+.instructors__cta p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--gray-400);
+}
+
+.instructors__cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  color: var(--gold-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.instructors__cta-link:hover {
+  color: var(--gold-light);
+}
+
+.instructors__cta-link svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.instructors__cta-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   8. DECORATIVE ELEMENTS
+   ============================================ */
+
+.instructors__decor {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 108, 0.1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.instructors__decor--1 {
+  width: 500px;
+  height: 500px;
+  top: -200px;
+  right: -200px;
+  animation: floatSlow 25s ease-in-out infinite;
+}
+
+.instructors__decor--2 {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  left: -150px;
+  animation: floatSlow 30s ease-in-out infinite reverse;
+}
+
+/* ============================================
+   9. RESPONSIVE - LARGE DESKTOP
+   ============================================ */
+
+@media (max-width: 1400px) {
+  .instructors__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   10. RESPONSIVE - TABLET
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .instructors__stats {
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+
+  .instructors__stat-divider {
+    display: none;
+  }
+
+  .instructors__stat {
+    width: calc(50% - var(--space-3));
+  }
+
+  .instructors__expertise-item {
+    font-size: var(--text-lg);
+  }
+}
+
+/* ============================================
+   11. RESPONSIVE - MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .instructors__container {
+    padding: 0 var(--space-4);
+  }
+
+  .instructors__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .instructors__expertise {
+    margin-top: var(--space-10);
+    padding: var(--space-6) 0;
+  }
+
+  .instructors__expertise-item {
+    font-size: var(--text-base);
+    gap: var(--space-2);
+  }
+
+  .instructors__stats {
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .instructors__stat {
+    width: 100%;
+  }
+
+  .instructors__stat-value {
+    font-size: var(--text-2xl);
+  }
+
+  .instructors__cta {
+    flex-direction: column;
+    text-align: center;
+    margin-top: var(--space-8);
+  }
+
+  .instructors__decor {
+    display: none;
+  }
+}
+
+/* ============================================
+   12. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .instructors__expertise-track {
+    animation: none;
+  }
+
+  .instructors__decor {
+    animation: none;
+  }
+}

@@ -1,0 +1,486 @@
+/* ============================================
+   ENVISAGE TRAINING ACADEMY
+   Main Application Styles
+   ============================================ */
+
+/* ============================================
+   1. APP WRAPPER
+   ============================================ */
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--black-primary);
+  overflow-x: hidden;
+}
+
+.app__wrapper {
+  opacity: 0;
+  transition: opacity 0.8s var(--ease-out);
+}
+
+.app__wrapper.is-loading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.app__wrapper.is-loaded {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============================================
+   2. MAIN CONTENT AREA
+   ============================================ */
+
+.main {
+  position: relative;
+  z-index: var(--z-base);
+}
+
+/* Ensure smooth transitions between sections */
+.main > section,
+.main > div {
+  position: relative;
+}
+
+/* ============================================
+   3. SECTION LOADER (For lazy loaded components)
+   ============================================ */
+
+.section-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  width: 100%;
+  background: var(--black-primary);
+}
+
+.section-loader__spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--gold-primary);
+  border-radius: 50%;
+  animation: preloaderSpin 1s linear infinite;
+}
+
+/* ============================================
+   4. BACK TO TOP BUTTON
+   ============================================ */
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-gold);
+  color: var(--black-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: var(--z-fixed);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.8);
+  transition: all var(--transition-medium);
+  box-shadow: var(--shadow-gold);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  transition: transform var(--transition-fast);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: var(--shadow-gold-lg);
+}
+
+.back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+.back-to-top:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Pulse animation for attention */
+.back-to-top.is-visible {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.back-to-top:hover {
+  animation: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .back-to-top svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ============================================
+   5. PAGE TRANSITIONS (For route changes)
+   ============================================ */
+
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* ============================================
+   6. GLOBAL OVERLAY (For modals, lightbox)
+   ============================================ */
+
+.global-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: var(--z-overlay);
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-medium);
+}
+
+.global-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ============================================
+   7. SCROLL LOCK (When modal is open)
+   ============================================ */
+
+body.scroll-locked {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   8. SELECTION STYLES
+   ============================================ */
+
+::selection {
+  background-color: var(--gold-primary);
+  color: var(--black-primary);
+}
+
+::-moz-selection {
+  background-color: var(--gold-primary);
+  color: var(--black-primary);
+}
+
+/* ============================================
+   9. FOCUS STYLES (Accessibility)
+   ============================================ */
+
+/* Custom focus ring */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--gold-primary);
+  outline-offset: 3px;
+}
+
+/* Remove focus ring on mouse click */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================
+   10. SMOOTH SCROLLING CONTAINER
+   ============================================ */
+
+/* Enable smooth scroll for all browsers */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Disable smooth scroll for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   11. GLOBAL LINK STYLES
+   ============================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold-primary);
+}
+
+/* Gold link variant */
+.link-gold {
+  color: var(--gold-primary);
+  position: relative;
+}
+
+.link-gold::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-primary);
+  transition: width var(--transition-fast);
+}
+
+.link-gold:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   12. GLOBAL BUTTON RESET
+   ============================================ */
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ============================================
+   13. LOADING STATES
+   ============================================ */
+
+.is-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.is-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 2px solid var(--glass-border);
+  border-top-color: var(--gold-primary);
+  border-radius: 50%;
+  animation: preloaderSpin 0.8s linear infinite;
+}
+
+/* ============================================
+   14. RESPONSIVE BREAKPOINTS DEBUG
+   (Remove in production)
+   ============================================ */
+
+/*
+.app::before {
+  content: 'XS: < 480px';
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  z-index: 9999;
+  border-radius: 4px;
+}
+
+@media (min-width: 480px) {
+  .app::before {
+    content: 'SM: 480px - 767px';
+    background: orange;
+  }
+}
+
+@media (min-width: 768px) {
+  .app::before {
+    content: 'MD: 768px - 1023px';
+    background: yellow;
+    color: black;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app::before {
+    content: 'LG: 1024px - 1279px';
+    background: green;
+  }
+}
+
+@media (min-width: 1280px) {
+  .app::before {
+    content: 'XL: 1280px - 1535px';
+    background: blue;
+  }
+}
+
+@media (min-width: 1536px) {
+  .app::before {
+    content: '2XL: >= 1536px';
+    background: purple;
+  }
+}
+*/
+
+/* ============================================
+   15. PRINT STYLES
+   ============================================ */
+
+@media print {
+  .back-to-top,
+  .custom-cursor,
+  .scroll-progress,
+  .preloader {
+    display: none !important;
+  }
+
+  .app__wrapper {
+    opacity: 1 !important;
+  }
+}
+
+/* ============================================
+   16. HIGH CONTRAST MODE SUPPORT
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  :root {
+    --gold-primary: #FFD700;
+    --black-primary: #000000;
+    --white-primary: #FFFFFF;
+    --glass-border: #FFFFFF;
+  }
+}
+
+/* ============================================
+   17. DARK MODE SUPPORT (Already dark, but for reference)
+   ============================================ */
+
+@media (prefers-color-scheme: light) {
+  /* If you want to add light mode support in the future */
+  /* Currently the site is dark themed */
+}
+
+/* ============================================
+   18. SAFARI SPECIFIC FIXES
+   ============================================ */
+
+/* Fix for Safari backdrop-filter */
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .glass {
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .glass {
+    background: rgba(26, 26, 46, 0.95);
+  }
+}
+
+/* ============================================
+   19. TOUCH DEVICE OPTIMIZATIONS
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover effects on touch devices */
+  .back-to-top:hover {
+    transform: translateY(0) scale(1);
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Larger touch targets */
+  .back-to-top {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ============================================
+   20. ANIMATION PERFORMANCE
+   ============================================ */
+
+/* Enable GPU acceleration for animated elements */
+.app__wrapper,
+.back-to-top,
+.global-overlay {
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+/* Remove will-change after animation completes */
+.app__wrapper.is-loaded {
+  will-change: auto;
+}

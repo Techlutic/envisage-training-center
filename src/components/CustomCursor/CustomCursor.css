@@ -1,0 +1,352 @@
+/* ============================================
+   CustomCursor Component Styles
+   Premium custom cursor
+   ============================================ */
+
+/* ============================================
+   1. HIDE DEFAULT CURSOR
+   ============================================ */
+
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
+/* Re-enable cursor for inputs */
+.custom-cursor-active input,
+.custom-cursor-active textarea,
+.custom-cursor-active select {
+  cursor: text !important;
+}
+
+/* ============================================
+   2. MAIN CURSOR DOT
+   ============================================ */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--cursor-size, 8px);
+  height: var(--cursor-size, 8px);
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(
+    calc(var(--cursor-x) - 50%),
+    calc(var(--cursor-y) - 50%)
+  );
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.custom-cursor.is-visible {
+  opacity: 1;
+}
+
+.custom-cursor.is-hidden {
+  opacity: 0;
+}
+
+.custom-cursor__dot {
+  width: 100%;
+  height: 100%;
+  background: var(--cursor-color, var(--gold-primary));
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Clicking state */
+.custom-cursor.is-clicking .custom-cursor__dot {
+  transform: scale(0.6);
+}
+
+/* Hovering state */
+.custom-cursor.is-hovering .custom-cursor__dot {
+  transform: scale(0.5);
+  background: var(--white-primary);
+}
+
+/* Text cursor variant */
+.custom-cursor.cursor--text .custom-cursor__dot {
+  width: 2px;
+  height: 24px;
+  border-radius: 1px;
+  background: var(--cursor-color);
+}
+
+/* ============================================
+   3. TRAILING RING
+   ============================================ */
+
+.custom-cursor__trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--trail-size, 40px);
+  height: var(--trail-size, 40px);
+  pointer-events: none;
+  z-index: calc(var(--z-cursor) - 1);
+  transform: translate(
+    calc(var(--trail-x) - 50%),
+    calc(var(--trail-y) - 50%)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.custom-cursor__trail.is-visible {
+  opacity: 1;
+}
+
+.custom-cursor__trail.is-hidden {
+  opacity: 0;
+}
+
+.custom-cursor__ring {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--cursor-color, var(--gold-primary));
+  border-radius: 50%;
+  transform: scale(1);
+  transition: 
+    transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    width 0.3s ease,
+    height 0.3s ease;
+  opacity: 0.6;
+}
+
+/* Clicking state */
+.custom-cursor__trail.is-clicking .custom-cursor__ring {
+  transform: scale(0.8);
+  opacity: 1;
+}
+
+/* Hovering state */
+.custom-cursor__trail.is-hovering .custom-cursor__ring {
+  transform: scale(1.5);
+  border-color: var(--gold-primary);
+  background: rgba(201, 168, 108, 0.1);
+  opacity: 1;
+}
+
+/* ============================================
+   4. CURSOR VARIANTS
+   ============================================ */
+
+/* Pointer variant (links, buttons) */
+.custom-cursor__trail.cursor--pointer .custom-cursor__ring {
+  transform: scale(1.5);
+  border-color: var(--gold-primary);
+}
+
+/* View variant (images, gallery) */
+.custom-cursor__trail.cursor--view {
+  width: 80px;
+  height: 80px;
+}
+
+.custom-cursor__trail.cursor--view .custom-cursor__ring {
+  transform: scale(1);
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+  opacity: 0.9;
+}
+
+/* Drag variant */
+.custom-cursor__trail.cursor--drag {
+  width: 80px;
+  height: 80px;
+}
+
+.custom-cursor__trail.cursor--drag .custom-cursor__ring {
+  transform: scale(1);
+  background: var(--black-primary);
+  border-color: var(--white-primary);
+  opacity: 0.9;
+}
+
+/* Text input variant */
+.custom-cursor__trail.cursor--text .custom-cursor__ring {
+  transform: scale(0.5);
+  opacity: 0.3;
+}
+
+/* Play variant */
+.custom-cursor__trail.cursor--play {
+  width: 100px;
+  height: 100px;
+}
+
+.custom-cursor__trail.cursor--play .custom-cursor__ring {
+  transform: scale(1);
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+}
+
+/* ============================================
+   5. CURSOR TEXT
+   ============================================ */
+
+.custom-cursor__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--black-primary);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.custom-cursor__trail.cursor--view .custom-cursor__text,
+.custom-cursor__trail.cursor--play .custom-cursor__text {
+  opacity: 1;
+  color: var(--black-primary);
+}
+
+.custom-cursor__trail.cursor--drag .custom-cursor__text {
+  opacity: 1;
+  color: var(--white-primary);
+}
+
+/* ============================================
+   6. MAGNETIC EFFECT (Enhanced)
+   ============================================ */
+
+.custom-cursor.is-magnetic {
+  transition: transform 0.15s ease;
+}
+
+.custom-cursor__trail.is-magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ============================================
+   7. BLEND MODE VARIANTS
+   ============================================ */
+
+/* Difference mode for light backgrounds */
+.custom-cursor--difference {
+  mix-blend-mode: difference;
+}
+
+.custom-cursor--difference .custom-cursor__dot {
+  background: var(--white-primary);
+}
+
+/* Exclusion mode */
+.custom-cursor--exclusion {
+  mix-blend-mode: exclusion;
+}
+
+/* ============================================
+   8. ANIMATED STATES
+   ============================================ */
+
+/* Pulse on hover */
+@keyframes cursorPulse {
+  0%, 100% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.7);
+    opacity: 1;
+  }
+}
+
+.custom-cursor__trail.cursor--pointer.is-hovering .custom-cursor__ring {
+  animation: cursorPulse 1.5s ease-in-out infinite;
+}
+
+/* Rotate on drag */
+@keyframes cursorRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   9. SPECIAL SECTION VARIANTS
+   ============================================ */
+
+/* Light section */
+[data-cursor-theme="light"] ~ .custom-cursor .custom-cursor__dot,
+.section--light .custom-cursor .custom-cursor__dot {
+  background: var(--black-primary);
+}
+
+[data-cursor-theme="light"] ~ .custom-cursor__trail .custom-cursor__ring,
+.section--light .custom-cursor__trail .custom-cursor__ring {
+  border-color: var(--black-primary);
+}
+
+/* Dark section (default) */
+[data-cursor-theme="dark"] ~ .custom-cursor .custom-cursor__dot {
+  background: var(--gold-primary);
+}
+
+/* Gold section */
+[data-cursor-theme="gold"] ~ .custom-cursor .custom-cursor__dot {
+  background: var(--white-primary);
+}
+
+[data-cursor-theme="gold"] ~ .custom-cursor__trail .custom-cursor__ring {
+  border-color: var(--white-primary);
+}
+
+/* ============================================
+   10. HIDE ON MOBILE/TOUCH
+   ============================================ */
+
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor,
+  .custom-cursor__trail {
+    display: none !important;
+  }
+
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: auto !important;
+  }
+}
+
+/* ============================================
+   11. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor,
+  .custom-cursor__trail {
+    transition: none;
+  }
+
+  .custom-cursor__dot,
+  .custom-cursor__ring {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* ============================================
+   12. DEBUG MODE (Remove in production)
+   ============================================ */
+
+/*
+.custom-cursor,
+.custom-cursor__trail {
+  outline: 1px solid red;
+}
+*/

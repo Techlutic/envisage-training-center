@@ -1,0 +1,50 @@
+{
+  "short_name": "Envisage Academy",
+  "name": "Envisage Training Academy - Premium Aesthetics Training",
+  "description": "UK's premier aesthetics training institution offering CPD-accredited courses in Botox, Dermal Fillers, and advanced aesthetic procedures.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0A0A0F",
+  "background_color": "#0A0A0F",
+  "categories": ["education", "business", "health"],
+  "lang": "en-GB",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "View Courses",
+      "short_name": "Courses",
+      "description": "Browse our training courses",
+      "url": "/#courses",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with our team",
+      "url": "/#contact",
+      "icons": [{ "src": "logo192.png", "sizes": "192x192" }]
+    }
+  ]
+}

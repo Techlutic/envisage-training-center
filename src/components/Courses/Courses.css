@@ -1,0 +1,314 @@
+/* ============================================
+   Courses Component Styles
+   Premium courses section
+   ============================================ */
+
+/* ============================================
+   1. BASE SECTION
+   ============================================ */
+
+.courses {
+  position: relative;
+  background: var(--black-primary);
+  overflow: hidden;
+}
+
+/* ============================================
+   2. BACKGROUND
+   ============================================ */
+
+.courses__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.courses__bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--black-secondary) 0%,
+    var(--black-primary) 30%,
+    var(--black-primary) 70%,
+    var(--black-secondary) 100%
+  );
+}
+
+.courses__bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A86C' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.courses__bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  height: 1000px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(201, 168, 108, 0.05) 0%,
+    transparent 60%
+  );
+}
+
+/* ============================================
+   3. CONTAINER
+   ============================================ */
+
+.courses__container {
+  position: relative;
+  z-index: 1;
+  width: var(--container-full);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* ============================================
+   4. COURSES GRID
+   ============================================ */
+
+.courses__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-12);
+}
+
+/* ============================================
+   5. EMPTY STATE
+   ============================================ */
+
+.courses__empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16);
+  text-align: center;
+}
+
+.courses__empty-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  margin-bottom: var(--space-6);
+  color: var(--gray-500);
+}
+
+.courses__empty-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.courses__empty h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  color: var(--white-primary);
+  margin-bottom: var(--space-2);
+}
+
+.courses__empty p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--gray-400);
+}
+
+/* ============================================
+   6. CTA SECTION
+   ============================================ */
+
+.courses__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--space-16);
+  gap: var(--space-6);
+}
+
+.courses__cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-10);
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--black-primary);
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  letter-spacing: var(--ls-wide);
+  transition: 
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.courses__cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.courses__cta-button:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-gold-lg);
+}
+
+.courses__cta-button:hover::before {
+  left: 100%;
+}
+
+.courses__cta-button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.courses__cta-button:hover svg {
+  transform: translateX(4px);
+}
+
+.courses__cta-note {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--gray-400);
+}
+
+.courses__cta-note svg {
+  width: 18px;
+  height: 18px;
+  color: var(--gold-primary);
+}
+
+/* ============================================
+   7. DECORATIVE ELEMENTS
+   ============================================ */
+
+.courses__decor {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 108, 0.1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.courses__decor--1 {
+  width: 400px;
+  height: 400px;
+  top: 10%;
+  left: -200px;
+  animation: floatSlow 20s ease-in-out infinite;
+}
+
+.courses__decor--2 {
+  width: 300px;
+  height: 300px;
+  bottom: 20%;
+  right: -150px;
+  animation: floatSlow 25s ease-in-out infinite reverse;
+}
+
+/* ============================================
+   8. RESPONSIVE - LARGE DESKTOP
+   ============================================ */
+
+@media (max-width: 1400px) {
+  .courses__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   9. RESPONSIVE - TABLET
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .courses__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+}
+
+/* ============================================
+   10. RESPONSIVE - MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .courses__container {
+    padding: 0 var(--space-4);
+  }
+
+  .courses__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .courses__cta {
+    margin-top: var(--space-12);
+  }
+
+  .courses__cta-button {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+  }
+
+  .courses__cta-note {
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .courses__decor {
+    display: none;
+  }
+}
+
+/* ============================================
+   11. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .courses__decor {
+    animation: none;
+  }
+}

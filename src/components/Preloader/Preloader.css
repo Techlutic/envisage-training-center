@@ -1,0 +1,533 @@
+/* ============================================
+   Preloader Component Styles
+   Premium loading screen
+   ============================================ */
+
+/* ============================================
+   1. BASE CONTAINER
+   ============================================ */
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: var(--z-preloader);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ============================================
+   2. BACKGROUND
+   ============================================ */
+
+.preloader__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.preloader__bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-dark);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+}
+
+.preloader__bg-noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   3. PARTICLES
+   ============================================ */
+
+.preloader__particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.preloader__particle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: var(--gold-primary);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  box-shadow: 0 0 10px rgba(201, 168, 108, 0.5);
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  10% {
+    opacity: 0.6;
+    transform: translateY(0) scale(1);
+  }
+  90% {
+    opacity: 0.6;
+    transform: translateY(-100px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(0);
+  }
+}
+
+/* ============================================
+   4. MAIN CONTENT
+   ============================================ */
+
+.preloader__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* ============================================
+   5. LOGO
+   ============================================ */
+
+.preloader__logo {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ring SVG */
+.preloader__logo-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.preloader__logo-ring-bg {
+  opacity: 0.3;
+}
+
+.preloader__logo-ring-progress {
+  transition: stroke-dashoffset 0.3s ease;
+  filter: drop-shadow(0 0 8px rgba(201, 168, 108, 0.5));
+}
+
+/* Logo letter */
+.preloader__logo-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader__logo-letter {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  font-weight: var(--fw-bold);
+  color: var(--gold-primary);
+  text-shadow: 0 0 20px rgba(201, 168, 108, 0.5);
+  animation: preloaderPulse 2s ease-in-out infinite;
+}
+
+/* Decorative dots */
+.preloader__logo-dots {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.preloader__logo-dots span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--gold-primary);
+  border-radius: 50%;
+  opacity: 0;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+.preloader__logo-dots span:nth-child(1) {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0s;
+}
+
+.preloader__logo-dots span:nth-child(2) {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  animation-delay: 0.5s;
+}
+
+.preloader__logo-dots span:nth-child(3) {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 1s;
+}
+
+.preloader__logo-dots span:nth-child(4) {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation-delay: 1.5s;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* ============================================
+   6. BRAND NAME
+   ============================================ */
+
+.preloader__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.preloader__brand-text {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-mega);
+  color: var(--white-primary);
+  opacity: 0;
+  animation: brandReveal 0.8s ease forwards 0.3s;
+}
+
+.preloader__brand-sub {
+  font-family: var(--font-accent);
+  font-size: var(--text-lg);
+  font-style: italic;
+  letter-spacing: var(--ls-wide);
+  color: var(--gold-primary);
+  opacity: 0;
+  animation: brandReveal 0.8s ease forwards 0.5s;
+}
+
+@keyframes brandReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ============================================
+   7. PROGRESS BAR
+   ============================================ */
+
+.preloader__progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 280px;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards 0.7s;
+}
+
+.preloader__progress-bar {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.preloader__progress-fill {
+  position: relative;
+  height: 100%;
+  background: var(--gradient-gold);
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+.preloader__progress-glow {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--gold-primary);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  filter: blur(8px);
+  opacity: 0.8;
+}
+
+.preloader__progress-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}
+
+.preloader__progress-text {
+  color: var(--gray-400);
+}
+
+.preloader__progress-percent {
+  color: var(--gold-primary);
+  font-weight: var(--fw-semibold);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ============================================
+   8. CORNER ACCENTS
+   ============================================ */
+
+.preloader__corner {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-color: var(--gold-primary);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.3;
+}
+
+.preloader__corner--tl {
+  top: 40px;
+  left: 40px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.preloader__corner--tr {
+  top: 40px;
+  right: 40px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+
+.preloader__corner--bl {
+  bottom: 40px;
+  left: 40px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+
+.preloader__corner--br {
+  bottom: 40px;
+  right: 40px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+/* ============================================
+   9. EXIT ANIMATION
+   ============================================ */
+
+.preloader__reveal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.preloader__reveal-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+}
+
+.preloader__reveal-layer--1 {
+  background: var(--gold-primary);
+}
+
+.preloader__reveal-layer--2 {
+  background: var(--black-primary);
+}
+
+/* Exit animation sequence */
+.preloader.is-exiting .preloader__content {
+  animation: contentExit 0.5s ease forwards;
+}
+
+.preloader.is-exiting .preloader__reveal-layer--1 {
+  animation: revealUp 0.5s ease forwards 0.2s;
+}
+
+.preloader.is-exiting .preloader__reveal-layer--2 {
+  animation: revealUp 0.5s ease forwards 0.35s;
+}
+
+.preloader.is-exiting .preloader__corner {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+.preloader.is-exiting .preloader__particles {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes contentExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+}
+
+@keyframes revealUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* ============================================
+   10. RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .preloader__logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .preloader__logo-letter {
+    font-size: 40px;
+  }
+
+  .preloader__brand-text {
+    font-size: var(--text-2xl);
+  }
+
+  .preloader__brand-sub {
+    font-size: var(--text-base);
+  }
+
+  .preloader__progress {
+    width: 240px;
+  }
+
+  .preloader__corner {
+    width: 30px;
+    height: 30px;
+  }
+
+  .preloader__corner--tl,
+  .preloader__corner--tr {
+    top: 20px;
+  }
+
+  .preloader__corner--bl,
+  .preloader__corner--br {
+    bottom: 20px;
+  }
+
+  .preloader__corner--tl,
+  .preloader__corner--bl {
+    left: 20px;
+  }
+
+  .preloader__corner--tr,
+  .preloader__corner--br {
+    right: 20px;
+  }
+}
+
+/* ============================================
+   11. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__particle,
+  .preloader__logo-letter,
+  .preloader__logo-dots span,
+  .preloader__bg-gradient {
+    animation: none;
+  }
+
+  .preloader__particle {
+    opacity: 0.4;
+  }
+
+  .preloader__brand-text,
+  .preloader__brand-sub,
+  .preloader__progress {
+    opacity: 1;
+    animation: none;
+    transform: none;
+    filter: none;
+  }
+
+  .preloader.is-exiting {
+    animation: fadeOut 0.5s ease forwards;
+  }
+
+  .preloader.is-exiting .preloader__reveal-layer {
+    display: none;
+  }
+}

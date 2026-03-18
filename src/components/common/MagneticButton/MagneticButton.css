@@ -1,0 +1,281 @@
+/* ============================================
+   MagneticButton Component Styles
+   ============================================ */
+
+/* ============================================
+   1. BASE STYLES
+   ============================================ */
+
+.magnetic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-8);
+  min-height: 56px;
+  
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gold-primary);
+  
+  background: transparent;
+  border: 2px solid var(--gold-primary);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  overflow: hidden;
+  
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+  
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus state */
+.magnetic-btn:focus-visible {
+  outline: 2px solid var(--gold-primary);
+  outline-offset: 4px;
+}
+
+/* ============================================
+   2. CONTENT (Inner text)
+   ============================================ */
+
+.magnetic-btn__content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform;
+}
+
+.magnetic-btn__content svg {
+  width: 1.25em;
+  height: 1.25em;
+  transition: transform var(--transition-fast);
+}
+
+/* Arrow icon animation on hover */
+.magnetic-btn.is-hovered .magnetic-btn__content svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   3. BACKGROUND ELEMENT
+   ============================================ */
+
+.magnetic-btn__bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--gold-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s var(--ease-out), height 0.5s var(--ease-out);
+  z-index: 1;
+}
+
+.magnetic-btn.is-hovered .magnetic-btn__bg {
+  width: 300%;
+  height: 300%;
+}
+
+/* ============================================
+   4. HOVER STATE
+   ============================================ */
+
+.magnetic-btn.is-hovered {
+  color: var(--black-primary);
+  border-color: var(--gold-primary);
+}
+
+/* ============================================
+   5. DISABLED STATE
+   ============================================ */
+
+.magnetic-btn.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================
+   6. VARIANTS
+   ============================================ */
+
+/* Gold filled */
+.magnetic-btn--filled {
+  background: var(--gradient-gold);
+  color: var(--black-primary);
+  border-color: transparent;
+}
+
+.magnetic-btn--filled .magnetic-btn__bg {
+  background: var(--black-primary);
+}
+
+.magnetic-btn--filled.is-hovered {
+  color: var(--gold-primary);
+}
+
+/* White */
+.magnetic-btn--white {
+  color: var(--white-primary);
+  border-color: var(--white-primary);
+}
+
+.magnetic-btn--white .magnetic-btn__bg {
+  background: var(--white-primary);
+}
+
+.magnetic-btn--white.is-hovered {
+  color: var(--black-primary);
+}
+
+/* Dark */
+.magnetic-btn--dark {
+  color: var(--black-primary);
+  border-color: var(--black-primary);
+}
+
+.magnetic-btn--dark .magnetic-btn__bg {
+  background: var(--black-primary);
+}
+
+.magnetic-btn--dark.is-hovered {
+  color: var(--white-primary);
+}
+
+/* Glass */
+.magnetic-btn--glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--white-primary);
+  border-color: var(--glass-border);
+}
+
+.magnetic-btn--glass .magnetic-btn__bg {
+  background: var(--gold-primary);
+}
+
+.magnetic-btn--glass.is-hovered {
+  color: var(--black-primary);
+  border-color: var(--gold-primary);
+}
+
+/* ============================================
+   7. SIZES
+   ============================================ */
+
+.magnetic-btn--small {
+  padding: var(--space-2) var(--space-5);
+  min-height: 40px;
+  font-size: var(--text-xs);
+}
+
+.magnetic-btn--large {
+  padding: var(--space-5) var(--space-10);
+  min-height: 64px;
+  font-size: var(--text-base);
+}
+
+/* ============================================
+   8. ICON BUTTON
+   ============================================ */
+
+.magnetic-btn--icon {
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.magnetic-btn--icon.magnetic-btn--small {
+  width: 40px;
+  height: 40px;
+}
+
+.magnetic-btn--icon.magnetic-btn--large {
+  width: 72px;
+  height: 72px;
+}
+
+/* ============================================
+   9. WITH GLOW
+   ============================================ */
+
+.magnetic-btn--glow {
+  box-shadow: 0 0 20px rgba(201, 168, 108, 0.2);
+}
+
+.magnetic-btn--glow.is-hovered {
+  box-shadow: 0 0 40px rgba(201, 168, 108, 0.4);
+}
+
+/* ============================================
+   10. RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .magnetic-btn {
+    min-height: 48px;
+    padding: var(--space-3) var(--space-6);
+  }
+
+  .magnetic-btn--large {
+    min-height: 56px;
+    padding: var(--space-4) var(--space-8);
+  }
+}
+
+/* Touch devices - disable magnetic effect */
+@media (hover: none) {
+  .magnetic-btn {
+    transition: 
+      background-color var(--transition-fast),
+      color var(--transition-fast),
+      border-color var(--transition-fast);
+  }
+
+  .magnetic-btn:active {
+    transform: scale(0.98);
+  }
+
+  .magnetic-btn:active .magnetic-btn__bg {
+    width: 300%;
+    height: 300%;
+  }
+
+  .magnetic-btn:active {
+    color: var(--black-primary);
+  }
+}
+
+/* ============================================
+   11. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-btn,
+  .magnetic-btn__content,
+  .magnetic-btn__bg {
+    transition: none;
+  }
+
+  .magnetic-btn.is-hovered .magnetic-btn__bg {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+  }
+}

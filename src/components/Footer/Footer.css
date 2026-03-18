@@ -1,0 +1,512 @@
+/* ============================================
+   Footer Component Styles
+   Comprehensive premium footer
+   ============================================ */
+
+/* ============================================
+   1. BASE STYLES
+   ============================================ */
+
+.footer {
+  position: relative;
+  background: var(--black-primary);
+  overflow: hidden;
+}
+
+.footer__container {
+  width: var(--container-full);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* ============================================
+   2. BACKGROUND
+   ============================================ */
+
+.footer__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.footer__bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(180deg, var(--black-secondary) 0%, var(--black-primary) 30%),
+    radial-gradient(ellipse at 20% 0%, rgba(201, 168, 108, 0.05) 0%, transparent 50%);
+}
+
+.footer__bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(201, 168, 108, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* ============================================
+   3. MAIN SECTION
+   ============================================ */
+
+.footer__main {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-20) 0 var(--space-12);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: var(--space-12);
+}
+
+/* ============================================
+   4. BRAND COLUMN
+   ============================================ */
+
+.footer__brand {
+  max-width: 320px;
+}
+
+.footer__logo {
+  display: inline-flex;
+  flex-direction: column;
+  text-decoration: none;
+  margin-bottom: var(--space-6);
+}
+
+.footer__logo-text {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--fw-bold);
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.footer__logo-sub {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--gray-400);
+  letter-spacing: var(--ls-wide);
+  margin-top: var(--space-1);
+}
+
+.footer__brand-desc {
+  color: var(--gray-400);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-6);
+}
+
+/* Social links */
+.footer__social {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.footer__social-link {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: var(--gray-400);
+  transition: all var(--transition-fast);
+}
+
+.footer__social-link:hover {
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+  color: var(--black-primary);
+  transform: translateY(-3px);
+}
+
+.footer__social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   5. LINKS COLUMNS
+   ============================================ */
+
+.footer__links-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--white-primary);
+  margin-bottom: var(--space-6);
+  position: relative;
+  padding-bottom: var(--space-3);
+}
+
+.footer__links-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+}
+
+.footer__links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__links-list li {
+  margin-bottom: var(--space-3);
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--gray-400);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.footer__link:hover {
+  color: var(--gold-primary);
+  transform: translateX(4px);
+}
+
+.footer__link-arrow {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all var(--transition-fast);
+  color: var(--gold-primary);
+}
+
+.footer__link:hover .footer__link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================
+   6. NEWSLETTER
+   ============================================ */
+
+.footer__newsletter-desc {
+  color: var(--gray-400);
+  font-size: var(--text-sm);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+.footer__newsletter-form {
+  margin-bottom: var(--space-6);
+}
+
+.footer__newsletter-input-wrapper {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.footer__newsletter-input {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  color: var(--white-primary);
+  font-size: var(--text-sm);
+  transition: all var(--transition-fast);
+}
+
+.footer__newsletter-input::placeholder {
+  color: var(--gray-500);
+}
+
+.footer__newsletter-input:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 3px rgba(201, 168, 108, 0.1);
+}
+
+.footer__newsletter-input.has-error {
+  border-color: var(--error);
+}
+
+.footer__newsletter-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-gold);
+  border: none;
+  border-radius: var(--radius-lg);
+  color: var(--black-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.footer__newsletter-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-gold-sm);
+}
+
+.footer__newsletter-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.footer__newsletter-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer__newsletter-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top-color: var(--black-primary);
+  border-radius: 50%;
+  animation: preloaderSpin 0.8s linear infinite;
+}
+
+.footer__newsletter-success {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--success);
+}
+
+.footer__newsletter-success svg {
+  width: 16px;
+  height: 16px;
+}
+
+.footer__newsletter-error {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--error);
+}
+
+/* Contact mini */
+.footer__contact-mini {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer__contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--gray-400);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer__contact-item:hover {
+  color: var(--gold-primary);
+}
+
+.footer__contact-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--gold-primary);
+}
+
+/* ============================================
+   7. BOTTOM BAR
+   ============================================ */
+
+.footer__bottom {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-6) 0;
+}
+
+.footer__bottom-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.footer__copyright {
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* Legal links */
+.footer__legal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.footer__legal-link {
+  font-size: var(--text-sm);
+  color: var(--gray-500);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer__legal-link:hover {
+  color: var(--gold-primary);
+}
+
+.footer__legal-divider {
+  color: var(--gray-600);
+}
+
+/* Certifications */
+.footer__certifications {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.footer__cert-badge {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-3);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+}
+
+/* ============================================
+   8. RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+  
+  .footer__brand {
+    grid-column: span 2;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__main {
+    padding: var(--space-12) 0;
+  }
+  
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+  
+  .footer__brand {
+    grid-column: span 1;
+    text-align: center;
+  }
+  
+  .footer__brand-desc {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .footer__social {
+    justify-content: center;
+  }
+  
+  .footer__links {
+    text-align: center;
+  }
+  
+  .footer__links-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .footer__link {
+    justify-content: center;
+  }
+  
+  .footer__newsletter {
+    text-align: center;
+  }
+  
+  .footer__contact-mini {
+    align-items: center;
+  }
+  
+  .footer__bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-4);
+  }
+  
+  .footer__legal {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .footer__certifications {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer__newsletter-input-wrapper {
+    flex-direction: column;
+  }
+  
+  .footer__newsletter-btn {
+    width: 100%;
+    height: 48px;
+  }
+  
+  .footer__legal {
+    gap: var(--space-3);
+  }
+  
+  .footer__certifications {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ============================================
+   9. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__social-link,
+  .footer__link,
+  .footer__newsletter-input,
+  .footer__newsletter-btn,
+  .footer__legal-link {
+    transition: none;
+  }
+  
+  .footer__newsletter-spinner {
+    animation: none;
+  }
+}

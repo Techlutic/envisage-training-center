@@ -1,0 +1,466 @@
+/* ============================================
+   FAQ Component Styles
+   Premium FAQ section with accordion
+   ============================================ */
+
+/* ============================================
+   1. SECTION BASE STYLES
+   ============================================ */
+
+.faq {
+  position: relative;
+  overflow: hidden;
+  background: var(--black-secondary);
+}
+
+.faq__container {
+  position: relative;
+  width: var(--container-full);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  z-index: 2;
+}
+
+/* ============================================
+   2. BACKGROUND ELEMENTS
+   ============================================ */
+
+.faq__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.faq__bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--black-secondary) 0%,
+    var(--black-primary) 100%
+  );
+}
+
+.faq__bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(var(--glass-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+  background-size: 100px 100px;
+  opacity: 0.2;
+}
+
+/* ============================================
+   3. CATEGORY TABS
+   ============================================ */
+
+.faq__categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-12) 0;
+}
+
+.faq__category {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  color: var(--gray-300);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.faq__category:hover {
+  background: var(--glass-bg-gold);
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+}
+
+.faq__category.is-active {
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+  color: var(--black-primary);
+}
+
+.faq__category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.faq__category-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   4. ACCORDION STYLES
+   ============================================ */
+
+.faq__accordion {
+  max-width: 800px;
+  margin: 0 auto var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.accordion-item {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-medium);
+}
+
+.accordion-item:hover {
+  border-color: rgba(201, 168, 108, 0.3);
+}
+
+/* Header */
+.accordion-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6);
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.accordion-item__header:hover {
+  background: var(--glass-bg-gold);
+}
+
+.accordion-item__header.is-open {
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.accordion-item__question {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-semibold);
+  color: var(--white-primary);
+  line-height: var(--lh-relaxed);
+  flex: 1;
+  margin-right: var(--space-4);
+}
+
+.accordion-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--gold-primary);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.accordion-item__header.is-open .accordion-item__icon {
+  transform: rotate(180deg);
+}
+
+.accordion-item__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Content */
+.accordion-item__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-out);
+}
+
+.accordion-item__answer {
+  padding: 0 var(--space-6) var(--space-6);
+}
+
+.accordion-item__answer p {
+  font-size: var(--text-base);
+  color: var(--gray-300);
+  line-height: var(--lh-relaxed);
+}
+
+/* ============================================
+   5. CTA SECTION
+   ============================================ */
+
+.faq__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding: var(--space-10);
+  background: var(--gradient-luxury);
+  border-radius: var(--radius-2xl);
+  margin-top: var(--space-16);
+}
+
+.faq__cta-content {
+  flex: 1;
+}
+
+.faq__cta-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--white-primary);
+  margin-bottom: var(--space-3);
+}
+
+.faq__cta-text {
+  font-size: var(--text-base);
+  color: var(--gray-200);
+  line-height: var(--lh-relaxed);
+}
+
+.faq__cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-8);
+  background: var(--gold-primary);
+  border: 2px solid var(--gold-primary);
+  border-radius: var(--radius-full);
+  color: var(--black-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  text-decoration: none;
+  transition: all var(--transition-medium);
+}
+
+.faq__cta-button:hover {
+  background: transparent;
+  color: var(--gold-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.faq__cta-button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.faq__cta-button:hover svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   6. DECORATIVE ELEMENTS
+   ============================================ */
+
+.faq__decor {
+  position: absolute;
+  pointer-events: none;
+}
+
+.faq__decor--1 {
+  top: 15%;
+  left: 5%;
+  width: 250px;
+  height: 250px;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  animation: floatPremium 10s ease-in-out infinite;
+}
+
+.faq__decor--2 {
+  bottom: 15%;
+  right: 5%;
+  width: 200px;
+  height: 200px;
+  background: var(--gradient-gold);
+  opacity: 0.05;
+  border-radius: var(--radius-2xl);
+  transform: rotate(45deg);
+  animation: floatPremium 12s ease-in-out infinite reverse;
+}
+
+/* ============================================
+   7. RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .faq__categories {
+    gap: var(--space-2);
+    margin: var(--space-8) 0;
+  }
+  
+  .faq__category {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+  }
+  
+  .faq__accordion {
+    margin: 0 auto var(--space-12);
+  }
+  
+  .accordion-item__header {
+    padding: var(--space-5);
+  }
+  
+  .accordion-item__question {
+    font-size: var(--text-base);
+  }
+  
+  .accordion-item__answer {
+    padding: 0 var(--space-5) var(--space-5);
+  }
+  
+  .accordion-item__answer p {
+    font-size: var(--text-sm);
+  }
+  
+  .faq__cta {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-6);
+    padding: var(--space-8);
+  }
+  
+  .faq__cta-title {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .faq__categories {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .faq__category {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .accordion-item__header {
+    padding: var(--space-4);
+  }
+  
+  .accordion-item__question {
+    font-size: var(--text-sm);
+  }
+  
+  .accordion-item__answer {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+  
+  .accordion-item__answer p {
+    font-size: var(--text-sm);
+  }
+  
+  .faq__cta {
+    padding: var(--space-6);
+  }
+  
+  .faq__cta-title {
+    font-size: var(--text-lg);
+  }
+  
+  .faq__cta-text {
+    font-size: var(--text-sm);
+  }
+  
+  .faq__cta-button {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-sm);
+  }
+  
+  /* Decorations */
+  .faq__decor--1,
+  .faq__decor--2 {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq__categories {
+    margin: var(--space-6) 0;
+  }
+  
+  .faq__category {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+  }
+  
+  .accordion-item__header {
+    padding: var(--space-3);
+  }
+  
+  .accordion-item__question {
+    font-size: var(--text-sm);
+  }
+  
+  .faq__cta {
+    padding: var(--space-4);
+  }
+  
+  .faq__cta-title {
+    font-size: var(--text-base);
+  }
+  
+  .faq__cta-text {
+    font-size: var(--text-xs);
+  }
+}
+
+/* ============================================
+   8. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-item__content {
+    transition: none;
+  }
+  
+  .accordion-item__icon,
+  .faq__category,
+  .faq__cta-button {
+    transition: none;
+  }
+  
+  .faq__decor--1,
+  .faq__decor--2 {
+    animation: none;
+  }
+}

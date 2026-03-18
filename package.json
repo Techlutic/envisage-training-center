@@ -1,0 +1,102 @@
+{
+  "name": "envisage-training-academy",
+  "version": "1.0.0",
+  "description": "Premium aesthetics training academy landing page - Award-winning UI/UX with cutting-edge 2024 web design",
+  "author": {
+    "name": "Envisage Training Academy",
+    "email": "info@envisageacademy.com",
+    "url": "https://envisageaesthetics.thinkific.com/"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://envisageaesthetics.thinkific.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/envisage-academy/landing-page.git"
+  },
+  "bugs": {
+    "url": "https://github.com/envisage-academy/landing-page/issues",
+    "email": "support@envisageacademy.com"
+  },
+  "keywords": [
+    "aesthetics",
+    "training",
+    "academy",
+    "botox",
+    "dermal fillers",
+    "react",
+    "landing page",
+    "premium",
+    "luxury"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "prop-types": "^15.8.1",
+    "web-vitals": "^3.5.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "eslint": "^8.55.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "prettier": "^3.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.{js,jsx}",
+    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "format": "prettier --write src/**/*.{js,jsx,css}",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "react/prop-types": "warn",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "jsx-a11y/anchor-is-valid": "warn",
+      "no-unused-vars": "warn",
+      "no-console": "warn"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "lf"
+  }
+}

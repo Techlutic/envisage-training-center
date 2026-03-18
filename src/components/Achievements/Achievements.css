@@ -1,0 +1,600 @@
+/* ============================================
+   Achievements Component Styles
+   Premium achievements section with counters
+   ============================================ */
+
+/* ============================================
+   1. SECTION BASE STYLES
+   ============================================ */
+
+.achievements {
+  position: relative;
+  overflow: hidden;
+  background: var(--gradient-dark);
+}
+
+.achievements__container {
+  position: relative;
+  width: var(--container-full);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+  z-index: 2;
+}
+
+/* ============================================
+   2. BACKGROUND ELEMENTS
+   ============================================ */
+
+.achievements__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.achievements__bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(201, 168, 108, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+.achievements__bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(rgba(201, 168, 108, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.achievements__bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(150px);
+  opacity: 0.3;
+}
+
+.achievements__bg-glow--1 {
+  top: 20%;
+  left: -15%;
+  background: var(--gold-primary);
+}
+
+.achievements__bg-glow--2 {
+  bottom: 20%;
+  right: -15%;
+  background: var(--accent-rose);
+}
+
+/* ============================================
+   3. COUNTERS SECTION
+   ============================================ */
+
+.achievements__counters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  margin: var(--space-16) 0;
+}
+
+.achievements__counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-6);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s var(--ease-out) forwards;
+  animation-delay: var(--counter-delay, 0ms);
+}
+
+.achievements__counter-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-gold);
+  border-radius: 50%;
+  color: var(--black-primary);
+  margin-bottom: var(--space-4);
+  transition: transform var(--transition-fast);
+}
+
+.achievements__counter:hover .achievements__counter-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.achievements__counter-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+.achievements__counter-number {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: var(--space-2);
+}
+
+.achievements__counter-value {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--fw-bold);
+  color: var(--gold-primary);
+  line-height: 1;
+}
+
+.achievements__counter-suffix {
+  font-size: var(--text-2xl);
+  color: var(--gold-primary);
+  margin-left: var(--space-1);
+}
+
+.achievements__counter-label {
+  font-size: var(--text-sm);
+  color: var(--gray-300);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+}
+
+/* ============================================
+   4. AWARDS SECTION
+   ============================================ */
+
+.achievements__awards {
+  margin: var(--space-20) 0;
+}
+
+.achievements__awards-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--fw-semibold);
+  color: var(--white-primary);
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.achievements__awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.achievements__award-card {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-medium);
+}
+
+.achievements__award-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-gold);
+}
+
+.achievements__award-image {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.achievements__award-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.achievements__award-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.achievements__award-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--fw-semibold);
+  color: var(--white-primary);
+  margin-bottom: var(--space-2);
+}
+
+.achievements__award-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.achievements__award-year {
+  font-size: var(--text-sm);
+  color: var(--gold-primary);
+  font-weight: var(--fw-medium);
+}
+
+.achievements__award-organization {
+  font-size: var(--text-xs);
+  color: var(--gray-400);
+}
+
+/* ============================================
+   5. CERTIFICATIONS SECTION
+   ============================================ */
+
+.achievements__certifications {
+  margin: var(--space-20) 0;
+}
+
+.achievements__certifications-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--fw-semibold);
+  color: var(--white-primary);
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.achievements__certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-8);
+  justify-items: center;
+}
+
+.achievements__certification-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-medium);
+}
+
+.achievements__certification-card:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: var(--shadow-gold-sm);
+}
+
+.achievements__certification-card img {
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.achievements__certification-name {
+  font-size: var(--text-sm);
+  color: var(--gray-300);
+  text-align: center;
+}
+
+/* ============================================
+   6. BANNER SECTION
+   ============================================ */
+
+.achievements__banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  padding: var(--space-12);
+  background: var(--gradient-luxury);
+  border-radius: var(--radius-3xl);
+  overflow: hidden;
+  position: relative;
+}
+
+.achievements__banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(201, 168, 108, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.achievements__banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.achievements__banner-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--white-primary);
+  line-height: var(--lh-tight);
+}
+
+.achievements__banner-text {
+  font-size: var(--text-lg);
+  color: var(--gray-200);
+  line-height: var(--lh-relaxed);
+}
+
+.achievements__banner-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.achievements__banner-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.achievements__banner-value {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--fw-bold);
+  color: var(--gold-primary);
+  line-height: 1;
+}
+
+.achievements__banner-label {
+  font-size: var(--text-sm);
+  color: var(--gray-300);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+}
+
+/* ============================================
+   7. DECORATIVE ELEMENTS
+   ============================================ */
+
+.achievements__decor {
+  position: absolute;
+  pointer-events: none;
+}
+
+.achievements__decor--1 {
+  top: 10%;
+  right: 5%;
+  width: 300px;
+  height: 300px;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  animation: floatPremium 12s ease-in-out infinite;
+}
+
+.achievements__decor--2 {
+  bottom: 10%;
+  left: 5%;
+  width: 200px;
+  height: 200px;
+  background: var(--gradient-gold);
+  opacity: 0.05;
+  border-radius: var(--radius-2xl);
+  transform: rotate(45deg);
+  animation: floatPremium 15s ease-in-out infinite reverse;
+}
+
+/* ============================================
+   8. RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 1280px) {
+  .achievements__counters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .achievements__banner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  
+  .achievements__banner-stats {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 1024px) {
+  .achievements__counters {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  
+  .achievements__counter-value {
+    font-size: var(--text-4xl);
+  }
+  
+  .achievements__awards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-4);
+  }
+  
+  .achievements__award-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .achievements__award-image {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .achievements__counters {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    margin: var(--space-8) 0;
+  }
+  
+  .achievements__counter {
+    padding: var(--space-4);
+  }
+  
+  .achievements__counter-value {
+    font-size: var(--text-3xl);
+  }
+  
+  .achievements__counter-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .achievements__counter-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .achievements__awards-title,
+  .achievements__certifications-title {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-8);
+  }
+  
+  .achievements__awards {
+    margin: var(--space-12) 0;
+  }
+  
+  .achievements__certifications {
+    margin: var(--space-12) 0;
+  }
+  
+  .achievements__certifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+  
+  .achievements__banner {
+    padding: var(--space-8);
+  }
+  
+  .achievements__banner-title {
+    font-size: var(--text-2xl);
+  }
+  
+  .achievements__banner-text {
+    font-size: var(--text-base);
+  }
+  
+  .achievements__banner-stats {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+  
+  .achievements__banner-value {
+    font-size: var(--text-3xl);
+  }
+  
+  /* Decorations */
+  .achievements__decor--1,
+  .achievements__decor--2 {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievements__counters {
+    gap: var(--space-3);
+  }
+  
+  .achievements__counter {
+    padding: var(--space-3);
+  }
+  
+  .achievements__counter-value {
+    font-size: var(--text-2xl);
+  }
+  
+  .achievements__counter-suffix {
+    font-size: var(--text-xl);
+  }
+  
+  .achievements__certifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+  
+  .achievements__certification-card {
+    padding: var(--space-3);
+  }
+  
+  .achievements__certification-card img {
+    width: 100px;
+    height: 70px;
+  }
+  
+  .achievements__banner {
+    padding: var(--space-6);
+  }
+  
+  .achievements__banner-title {
+    font-size: var(--text-xl);
+  }
+  
+  .achievements__banner-stats {
+    gap: var(--space-4);
+  }
+  
+  .achievements__banner-value {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* ============================================
+   9. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .achievements__counter {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  
+  .achievements__counter-icon,
+  .achievements__award-card,
+  .achievements__certification-card {
+    transition: none;
+  }
+  
+  .achievements__decor--1,
+  .achievements__decor--2 {
+    animation: none;
+  }
+}

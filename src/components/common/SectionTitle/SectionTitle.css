@@ -1,0 +1,315 @@
+/* ============================================
+   SectionTitle Component Styles
+   ============================================ */
+
+/* ============================================
+   1. BASE STYLES
+   ============================================ */
+
+.section-title {
+  position: relative;
+  max-width: 800px;
+  margin-bottom: var(--space-16);
+}
+
+/* ============================================
+   2. ALIGNMENT VARIANTS
+   ============================================ */
+
+.section-title--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-title--left {
+  text-align: left;
+}
+
+.section-title--right {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* ============================================
+   3. THEME VARIANTS
+   ============================================ */
+
+/* Dark theme (default) */
+.section-title--dark .section-title__heading {
+  color: var(--white-primary);
+}
+
+.section-title--dark .section-title__description {
+  color: var(--gray-300);
+}
+
+.section-title--dark .section-title__subtitle-text {
+  color: var(--gold-primary);
+}
+
+/* Light theme */
+.section-title--light .section-title__heading {
+  color: var(--black-primary);
+}
+
+.section-title--light .section-title__description {
+  color: var(--gray-600);
+}
+
+.section-title--light .section-title__subtitle-text {
+  color: var(--gold-dark);
+}
+
+/* ============================================
+   4. SUBTITLE STYLES
+   ============================================ */
+
+.section-title__subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.section-title__subtitle.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title__subtitle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--gold-primary);
+}
+
+.section-title__subtitle-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.section-title__subtitle-text {
+  font-family: var(--font-accent);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-medium);
+  font-style: italic;
+  letter-spacing: var(--ls-wide);
+}
+
+.section-title__subtitle-line {
+  display: none;
+  width: 60px;
+  height: 1px;
+  background: var(--gradient-gold);
+}
+
+.section-title--left .section-title__subtitle-line {
+  display: block;
+}
+
+/* ============================================
+   5. HEADING STYLES
+   ============================================ */
+
+.section-title__heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--space-6);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transition-delay: 0.1s;
+}
+
+.section-title__heading.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accent text (gold gradient) */
+.section-title__heading-accent {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   6. DESCRIPTION STYLES
+   ============================================ */
+
+.section-title__description {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: var(--lh-relaxed);
+  max-width: 600px;
+  margin-bottom: var(--space-8);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transition-delay: 0.2s;
+}
+
+.section-title__description.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title--center .section-title__description {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   7. DECORATOR STYLES
+   ============================================ */
+
+.section-title__decorator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.section-title--left .section-title__decorator {
+  justify-content: flex-start;
+}
+
+.section-title--right .section-title__decorator {
+  justify-content: flex-end;
+}
+
+.section-title__decorator-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-primary),
+    transparent
+  );
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transition-delay: 0.4s;
+}
+
+.section-title__heading.is-visible ~ .section-title__decorator .section-title__decorator-line,
+.section-title__description.is-visible ~ .section-title__decorator .section-title__decorator-line {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.section-title__decorator-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--gold-primary);
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.5s var(--ease-bounce);
+  transition-delay: 0.5s;
+}
+
+.section-title__heading.is-visible ~ .section-title__decorator .section-title__decorator-diamond,
+.section-title__description.is-visible ~ .section-title__decorator .section-title__decorator-diamond {
+  transform: rotate(45deg) scale(1);
+}
+
+/* Left alignment decorator */
+.section-title--left .section-title__decorator-line:first-child {
+  display: none;
+}
+
+.section-title--left .section-title__decorator-line {
+  background: linear-gradient(90deg, var(--gold-primary), transparent);
+  width: 100px;
+}
+
+/* ============================================
+   8. RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .section-title {
+    margin-bottom: var(--space-12);
+  }
+
+  .section-title__heading {
+    font-size: var(--text-4xl);
+  }
+
+  .section-title__description {
+    font-size: var(--text-base);
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    margin-bottom: var(--space-10);
+  }
+
+  .section-title__heading {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-title__subtitle-text {
+    font-size: var(--text-base);
+  }
+
+  .section-title__description {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-6);
+  }
+
+  .section-title__decorator-line {
+    width: 40px;
+  }
+
+  /* Center align on mobile */
+  .section-title--left {
+    text-align: center;
+  }
+
+  .section-title--left .section-title__decorator {
+    justify-content: center;
+  }
+
+  .section-title--left .section-title__subtitle-line {
+    display: none;
+  }
+
+  .section-title--left .section-title__decorator-line:first-child {
+    display: block;
+    background: linear-gradient(90deg, transparent, var(--gold-primary));
+  }
+
+  .section-title--left .section-title__decorator-line:last-child {
+    background: linear-gradient(90deg, var(--gold-primary), transparent);
+  }
+}
+
+/* ============================================
+   9. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .section-title__subtitle,
+  .section-title__heading,
+  .section-title__description,
+  .section-title__decorator-line,
+  .section-title__decorator-diamond {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

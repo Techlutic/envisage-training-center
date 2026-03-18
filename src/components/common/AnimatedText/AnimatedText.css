@@ -1,0 +1,382 @@
+/* ============================================
+   AnimatedText Component Styles
+   ============================================ */
+
+/* ============================================
+   1. BASE STYLES
+   ============================================ */
+
+.animated-text {
+  display: inline-block;
+  position: relative;
+}
+
+/* ============================================
+   2. SIMPLE ANIMATIONS
+   ============================================ */
+
+/* Fade Up */
+.animated-text--fadeUp {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 
+    opacity var(--animation-duration, 600ms) var(--ease-out),
+    transform var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--fadeUp.is-animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Down */
+.animated-text--fadeDown {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: 
+    opacity var(--animation-duration, 600ms) var(--ease-out),
+    transform var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--fadeDown.is-animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade Left */
+.animated-text--fadeLeft {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: 
+    opacity var(--animation-duration, 600ms) var(--ease-out),
+    transform var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--fadeLeft.is-animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade Right */
+.animated-text--fadeRight {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: 
+    opacity var(--animation-duration, 600ms) var(--ease-out),
+    transform var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--fadeRight.is-animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade In */
+.animated-text--fadeIn {
+  opacity: 0;
+  transition: opacity var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--fadeIn.is-animated {
+  opacity: 1;
+}
+
+/* Scale In */
+.animated-text--scaleIn {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: 
+    opacity var(--animation-duration, 600ms) var(--ease-out),
+    transform var(--animation-duration, 600ms) var(--ease-bounce);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--scaleIn.is-animated {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide Up */
+.animated-text--slideUp {
+  transform: translateY(100%);
+  transition: transform var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--slideUp.is-animated {
+  transform: translateY(0);
+}
+
+/* Clip Reveal */
+.animated-text--clipReveal {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  transition: clip-path var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--clipReveal.is-animated {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Blur */
+.animated-text--blur {
+  opacity: 0;
+  filter: blur(10px);
+  transition: 
+    opacity var(--animation-duration, 600ms) var(--ease-out),
+    filter var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--blur.is-animated {
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* Gradient shine */
+.animated-text--gradient {
+  background: linear-gradient(
+    90deg,
+    var(--white-primary) 0%,
+    var(--gold-primary) 50%,
+    var(--white-primary) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: none;
+}
+
+.animated-text--gradient.is-animated {
+  animation: goldShimmer 3s linear infinite;
+  animation-delay: var(--animation-delay, 0ms);
+}
+
+/* ============================================
+   3. CHARACTER ANIMATIONS
+   ============================================ */
+
+/* Character wrapper */
+.animated-text__char {
+  display: inline-block;
+  opacity: 0;
+  transition: 
+    opacity var(--animation-duration, 600ms) var(--ease-out),
+    transform var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--char-delay, 0ms);
+}
+
+/* Char Reveal (fade only) */
+.animated-text--charReveal .animated-text__char {
+  opacity: 0;
+}
+
+.animated-text--charReveal.is-animated .animated-text__char {
+  opacity: 1;
+}
+
+/* Char Reveal Up */
+.animated-text--charRevealUp .animated-text__char {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.animated-text--charRevealUp.is-animated .animated-text__char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Char Reveal Rotate */
+.animated-text--charRevealRotate .animated-text__char {
+  opacity: 0;
+  transform: translateY(50px) rotateX(-90deg);
+  transform-origin: center bottom;
+}
+
+.animated-text--charRevealRotate.is-animated .animated-text__char {
+  opacity: 1;
+  transform: translateY(0) rotateX(0);
+}
+
+/* ============================================
+   4. WORD ANIMATIONS
+   ============================================ */
+
+/* Word wrapper */
+.animated-text__word-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.animated-text__word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 
+    opacity var(--animation-duration, 600ms) var(--ease-out),
+    transform var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--word-delay, 0ms);
+}
+
+/* Word Reveal */
+.animated-text--wordReveal .animated-text__word {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.animated-text--wordReveal.is-animated .animated-text__word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Word Reveal Up */
+.animated-text--wordRevealUp .animated-text__word {
+  opacity: 0;
+  transform: translateY(100%) rotateX(-15deg);
+  transform-origin: center bottom;
+}
+
+.animated-text--wordRevealUp.is-animated .animated-text__word {
+  opacity: 1;
+  transform: translateY(0) rotateX(0);
+}
+
+/* ============================================
+   5. TYPEWRITER ANIMATION
+   ============================================ */
+
+.animated-text--typewriter {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--gold-primary);
+  width: 0;
+  animation: none;
+}
+
+.animated-text--typewriter.is-animated {
+  animation: 
+    typewriter var(--animation-duration, 2000ms) steps(40) forwards,
+    blinkCursor 0.75s step-end infinite;
+  animation-delay: var(--animation-delay, 0ms);
+}
+
+/* ============================================
+   6. SPECIAL EFFECTS
+   ============================================ */
+
+/* Text glow effect */
+.animated-text--glow {
+  text-shadow: 0 0 10px rgba(201, 168, 108, 0);
+  transition: text-shadow var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--glow.is-animated {
+  text-shadow: 
+    0 0 10px rgba(201, 168, 108, 0.5),
+    0 0 20px rgba(201, 168, 108, 0.3),
+    0 0 40px rgba(201, 168, 108, 0.2);
+}
+
+/* Split line animation */
+.animated-text--splitLine {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-text--splitLine::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+  transition: width var(--animation-duration, 600ms) var(--ease-out);
+  transition-delay: var(--animation-delay, 0ms);
+}
+
+.animated-text--splitLine.is-animated::after {
+  width: 100%;
+}
+
+/* ============================================
+   7. HOVER EFFECTS (for interactive text)
+   ============================================ */
+
+.animated-text--hover-lift:hover {
+  transform: translateY(-2px);
+  transition: transform var(--transition-fast);
+}
+
+.animated-text--hover-color:hover {
+  color: var(--gold-primary);
+  transition: color var(--transition-fast);
+}
+
+.animated-text--hover-underline {
+  position: relative;
+}
+
+.animated-text--hover-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: var(--gold-primary);
+  transition: width var(--transition-medium);
+}
+
+.animated-text--hover-underline:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   8. RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Reduce animation intensity on mobile */
+  .animated-text--fadeUp,
+  .animated-text--fadeDown {
+    transform: translateY(20px);
+  }
+
+  .animated-text--fadeLeft,
+  .animated-text--fadeRight {
+    transform: translateX(20px);
+  }
+}
+
+/* ============================================
+   9. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-text,
+  .animated-text__char,
+  .animated-text__word {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+
+  .animated-text--typewriter {
+    width: auto !important;
+    border-right: none !important;
+  }
+}

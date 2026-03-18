@@ -1,0 +1,472 @@
+/* ============================================
+   InstructorCard Component Styles
+   ============================================ */
+
+/* ============================================
+   1. BASE CARD
+   ============================================ */
+
+.instructor-card {
+  position: relative;
+  background: var(--black-secondary);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-medium);
+}
+
+.instructor-card:hover {
+  transform: translateY(-8px);
+}
+
+/* ============================================
+   2. IMAGE SECTION
+   ============================================ */
+
+.instructor-card__image-wrapper {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.instructor-card__image {
+  width: 100%;
+  height: 100%;
+}
+
+.instructor-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.instructor-card:hover .instructor-card__image img {
+  transform: scale(1.1);
+}
+
+/* Gradient overlay */
+.instructor-card__gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(10, 10, 15, 0.6) 70%,
+    rgba(10, 10, 15, 0.95) 100%
+  );
+  pointer-events: none;
+  transition: opacity var(--transition-medium);
+}
+
+/* ============================================
+   3. EXPERIENCE BADGE
+   ============================================ */
+
+.instructor-card__experience {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  padding: var(--space-2) var(--space-3);
+  background: var(--gradient-gold);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  z-index: 2;
+}
+
+.instructor-card__experience span {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: var(--fw-bold);
+  color: var(--black-primary);
+  line-height: 1;
+}
+
+.instructor-card__experience small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: var(--fw-medium);
+  color: var(--black-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  margin-top: 2px;
+}
+
+/* ============================================
+   4. SOCIAL LINKS
+   ============================================ */
+
+.instructor-card__social {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: 
+    opacity var(--transition-medium),
+    transform var(--transition-medium);
+  z-index: 2;
+}
+
+.instructor-card:hover .instructor-card__social {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.instructor-card__social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  color: var(--white-primary);
+  transition: 
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.instructor-card__social a:hover {
+  background: var(--gold-primary);
+  border-color: var(--gold-primary);
+  color: var(--black-primary);
+  transform: scale(1.1);
+}
+
+.instructor-card__social svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   5. CONTENT
+   ============================================ */
+
+.instructor-card__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-5);
+  z-index: 2;
+}
+
+.instructor-card__info {
+  margin-bottom: var(--space-3);
+}
+
+.instructor-card__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--fw-bold);
+  color: var(--white-primary);
+  margin-bottom: var(--space-1);
+  transition: color var(--transition-fast);
+}
+
+.instructor-card:hover .instructor-card__name {
+  color: var(--gold-primary);
+}
+
+.instructor-card__title {
+  font-family: var(--font-accent);
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--gold-primary);
+}
+
+/* ============================================
+   6. SPECIALIZATIONS
+   ============================================ */
+
+.instructor-card__specializations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.instructor-card__tag {
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: var(--fw-medium);
+  color: var(--gray-300);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+}
+
+/* ============================================
+   7. STATS
+   ============================================ */
+
+.instructor-card__stats {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--glass-border);
+}
+
+.instructor-card__stat {
+  text-align: center;
+}
+
+.instructor-card__stat-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-bold);
+  color: var(--white-primary);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.instructor-card__stat-value svg {
+  width: 14px;
+  height: 14px;
+  color: var(--gold-primary);
+}
+
+.instructor-card__stat-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+}
+
+/* ============================================
+   8. HOVER OVERLAY
+   ============================================ */
+
+.instructor-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  opacity: 0;
+  visibility: hidden;
+  transition: 
+    opacity var(--transition-medium),
+    visibility var(--transition-medium);
+  z-index: 10;
+}
+
+.instructor-card.is-active .instructor-card__overlay,
+.instructor-card:hover .instructor-card__overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.instructor-card__overlay-content {
+  text-align: center;
+  transform: translateY(20px);
+  transition: transform var(--transition-medium);
+}
+
+.instructor-card.is-active .instructor-card__overlay-content,
+.instructor-card:hover .instructor-card__overlay-content {
+  transform: translateY(0);
+}
+
+.instructor-card__overlay h4 {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-bold);
+  color: var(--gold-primary);
+  margin-bottom: var(--space-4);
+}
+
+.instructor-card__bio {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--gray-300);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+/* Qualifications */
+.instructor-card__qualifications {
+  margin-bottom: var(--space-6);
+}
+
+.instructor-card__qualifications h5 {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-widest);
+  margin-bottom: var(--space-3);
+}
+
+.instructor-card__qualifications ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.instructor-card__qualifications li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--gray-300);
+  padding: var(--space-1) 0;
+}
+
+.instructor-card__qualifications svg {
+  width: 12px;
+  height: 12px;
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+/* Overlay CTA */
+.instructor-card__overlay-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--black-primary);
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: 
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.instructor-card__overlay-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold-sm);
+}
+
+.instructor-card__overlay-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.instructor-card__overlay-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   9. BORDER
+   ============================================ */
+
+.instructor-card__border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--glass-border);
+  pointer-events: none;
+  z-index: 11;
+  transition: border-color var(--transition-fast);
+}
+
+.instructor-card:hover .instructor-card__border {
+  border-color: var(--gold-primary);
+}
+
+/* ============================================
+   10. RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .instructor-card__image-wrapper {
+    aspect-ratio: 1 / 1;
+  }
+
+  .instructor-card__name {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .instructor-card:hover {
+    transform: none;
+  }
+
+  .instructor-card__image-wrapper {
+    aspect-ratio: 4 / 3;
+  }
+
+  .instructor-card__social {
+    opacity: 1;
+    transform: none;
+    flex-direction: row;
+  }
+
+  .instructor-card__overlay {
+    display: none;
+  }
+
+  .instructor-card__experience span {
+    font-size: var(--text-sm);
+  }
+}
+
+/* ============================================
+   11. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .instructor-card,
+  .instructor-card__image img,
+  .instructor-card__social,
+  .instructor-card__social a,
+  .instructor-card__name,
+  .instructor-card__overlay,
+  .instructor-card__overlay-content,
+  .instructor-card__overlay-cta,
+  .instructor-card__border {
+    transition: none;
+  }
+
+  .instructor-card:hover {
+    transform: none;
+  }
+
+  .instructor-card:hover .instructor-card__image img {
+    transform: none;
+  }
+}

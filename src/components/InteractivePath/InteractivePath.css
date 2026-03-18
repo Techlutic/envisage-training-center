@@ -1,0 +1,614 @@
+/* ============================================
+   InteractivePath Component Styles
+   Interactive learning journey timeline
+   ============================================ */
+
+/* ============================================
+   1. BASE SECTION
+   ============================================ */
+
+.interactive-path {
+  position: relative;
+  background: var(--black-primary);
+  overflow: hidden;
+}
+
+/* ============================================
+   2. BACKGROUND
+   ============================================ */
+
+.interactive-path__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.interactive-path__bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center top,
+    rgba(201, 168, 108, 0.05) 0%,
+    transparent 50%
+  );
+}
+
+.interactive-path__bg-lines {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(201, 168, 108, 0.1) 20%,
+    rgba(201, 168, 108, 0.1) 80%,
+    transparent 100%
+  );
+}
+
+/* ============================================
+   3. CONTAINER
+   ============================================ */
+
+.interactive-path__container {
+  position: relative;
+  z-index: 1;
+  width: var(--container-full);
+  max-width: var(--container-2xl);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* ============================================
+   4. TIMELINE
+   ============================================ */
+
+.interactive-path__timeline {
+  position: relative;
+  max-width: 900px;
+  margin: var(--space-16) auto 0;
+}
+
+/* Main animated line */
+.interactive-path__line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: var(--glass-border);
+  z-index: 0;
+}
+
+.interactive-path__line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--gradient-gold);
+  transition: height 0.1s linear;
+  box-shadow: 0 0 20px rgba(201, 168, 108, 0.5);
+}
+
+/* ============================================
+   5. STEPS
+   ============================================ */
+
+.interactive-path__steps {
+  position: relative;
+  z-index: 1;
+}
+
+.interactive-path__step {
+  display: flex;
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
+  cursor: pointer;
+}
+
+/* Alternate sides */
+.interactive-path__step:nth-child(odd) {
+  flex-direction: row;
+}
+
+.interactive-path__step:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.interactive-path__step:nth-child(odd) .interactive-path__content {
+  text-align: left;
+}
+
+.interactive-path__step:nth-child(even) .interactive-path__content {
+  text-align: right;
+}
+
+.interactive-path__step:nth-child(even) .interactive-path__card-header {
+  flex-direction: row-reverse;
+}
+
+.interactive-path__step:nth-child(even) .interactive-path__details {
+  align-items: flex-end;
+}
+
+.interactive-path__step:nth-child(even) .interactive-path__card-footer {
+  justify-content: flex-end;
+}
+
+/* ============================================
+   6. MARKER
+   ============================================ */
+
+.interactive-path__marker {
+  position: relative;
+  flex-shrink: 0;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.interactive-path__marker-outer {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--black-secondary);
+  border: 2px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.interactive-path__step.is-active .interactive-path__marker-outer,
+.interactive-path__step.is-completed .interactive-path__marker-outer {
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-glow);
+}
+
+.interactive-path__step:hover .interactive-path__marker-outer {
+  transform: scale(1.1);
+}
+
+.interactive-path__marker-inner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.interactive-path__step.is-active .interactive-path__marker-inner,
+.interactive-path__step.is-completed .interactive-path__marker-inner {
+  background: var(--gradient-gold);
+}
+
+.interactive-path__marker-number {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--fw-bold);
+  color: var(--gray-400);
+  transition: color var(--transition-fast);
+}
+
+.interactive-path__step.is-active .interactive-path__marker-number,
+.interactive-path__step.is-completed .interactive-path__marker-number {
+  color: var(--black-primary);
+}
+
+/* Connector */
+.interactive-path__connector {
+  display: none;
+}
+
+/* ============================================
+   7. CONTENT
+   ============================================ */
+
+.interactive-path__content {
+  flex: 1;
+  max-width: calc(50% - 60px);
+}
+
+/* ============================================
+   8. CARD
+   ============================================ */
+
+.interactive-path__card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  transition: 
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.interactive-path__step:hover .interactive-path__card {
+  border-color: var(--gold-primary);
+  transform: translateY(-4px);
+}
+
+.interactive-path__step.is-active .interactive-path__card {
+  border-color: var(--gold-primary);
+  box-shadow: var(--shadow-gold);
+}
+
+/* Card header */
+.interactive-path__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.interactive-path__icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg-gold);
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--radius-lg);
+  color: var(--gold-primary);
+  transition: 
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.interactive-path__step.is-active .interactive-path__icon {
+  background: var(--gold-primary);
+  color: var(--black-primary);
+}
+
+.interactive-path__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.interactive-path__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-1);
+}
+
+.interactive-path__highlight {
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--black-primary);
+  background: var(--gold-primary);
+  border-radius: var(--radius-sm);
+}
+
+.interactive-path__duration {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--gray-400);
+}
+
+.interactive-path__duration svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Card body */
+.interactive-path__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--fw-semibold);
+  color: var(--white-primary);
+  margin-bottom: var(--space-3);
+  transition: color var(--transition-fast);
+}
+
+.interactive-path__step.is-active .interactive-path__title {
+  color: var(--gold-primary);
+}
+
+.interactive-path__description {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--gray-400);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-4);
+}
+
+/* Details list */
+.interactive-path__details {
+  list-style: none;
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.interactive-path__details li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--gray-300);
+}
+
+.interactive-path__details svg {
+  width: 14px;
+  height: 14px;
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+/* Card footer */
+.interactive-path__card-footer {
+  display: flex;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--glass-border);
+}
+
+.interactive-path__learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--fw-medium);
+  color: var(--gold-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.interactive-path__learn-more:hover {
+  color: var(--gold-light);
+}
+
+.interactive-path__learn-more svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--transition-fast);
+}
+
+.interactive-path__learn-more:hover svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   9. CTA SECTION
+   ============================================ */
+
+.interactive-path__cta {
+  text-align: center;
+  margin-top: var(--space-20);
+  padding: var(--space-12);
+  background: var(--gradient-glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-2xl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.interactive-path__cta h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--fw-bold);
+  color: var(--white-primary);
+  margin-bottom: var(--space-4);
+}
+
+.interactive-path__cta p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--gray-400);
+  margin-bottom: var(--space-6);
+}
+
+.interactive-path__cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+  color: var(--black-primary);
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: 
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.interactive-path__cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold-lg);
+}
+
+.interactive-path__cta-button svg {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+.interactive-path__cta-button:hover svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   10. RESPONSIVE - TABLET
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .interactive-path__content {
+    max-width: calc(50% - 50px);
+  }
+
+  .interactive-path__card {
+    padding: var(--space-5);
+  }
+
+  .interactive-path__title {
+    font-size: var(--text-lg);
+  }
+}
+
+/* ============================================
+   11. RESPONSIVE - MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .interactive-path__container {
+    padding: 0 var(--space-4);
+  }
+
+  .interactive-path__timeline {
+    margin-top: var(--space-12);
+  }
+
+  .interactive-path__line {
+    left: 30px;
+    transform: none;
+  }
+
+  .interactive-path__step,
+  .interactive-path__step:nth-child(even) {
+    flex-direction: row;
+    gap: var(--space-4);
+  }
+
+  .interactive-path__step:nth-child(even) .interactive-path__content,
+  .interactive-path__step:nth-child(odd) .interactive-path__content {
+    text-align: left;
+  }
+
+  .interactive-path__step:nth-child(even) .interactive-path__card-header {
+    flex-direction: row;
+  }
+
+  .interactive-path__step:nth-child(even) .interactive-path__details {
+    align-items: flex-start;
+  }
+
+  .interactive-path__step:nth-child(even) .interactive-path__card-footer {
+    justify-content: flex-start;
+  }
+
+  .interactive-path__marker {
+    width: 50px;
+  }
+
+  .interactive-path__marker-outer {
+    width: 50px;
+    height: 50px;
+  }
+
+  .interactive-path__marker-inner {
+    width: 40px;
+    height: 40px;
+  }
+
+  .interactive-path__marker-number {
+    font-size: var(--text-base);
+  }
+
+  .interactive-path__content {
+    flex: 1;
+    max-width: none;
+  }
+
+  .interactive-path__card {
+    padding: var(--space-4);
+  }
+
+  .interactive-path__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .interactive-path__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .interactive-path__title {
+    font-size: var(--text-base);
+  }
+
+  .interactive-path__description {
+    font-size: var(--text-xs);
+  }
+
+  .interactive-path__details li {
+    font-size: 11px;
+  }
+
+  .interactive-path__cta {
+    margin-top: var(--space-12);
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .interactive-path__cta h3 {
+    font-size: var(--text-2xl);
+  }
+
+  .interactive-path__cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   12. REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-path__line-progress {
+    transition: none;
+  }
+
+  .interactive-path__marker-outer,
+  .interactive-path__card,
+  .interactive-path__icon,
+  .interactive-path__learn-more svg,
+  .interactive-path__cta-button,
+  .interactive-path__cta-button svg {
+    transition: none;
+  }
+
+  .interactive-path__step:hover .interactive-path__marker-outer,
+  .interactive-path__step:hover .interactive-path__card {
+    transform: none;
+  }
+}

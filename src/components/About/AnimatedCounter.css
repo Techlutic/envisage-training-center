@@ -1,0 +1,108 @@
+/* ============================================
+   AnimatedCounter Component Styles
+   ============================================ */
+
+.animated-counter {
+  display: inline-block;
+}
+
+.animated-counter__value {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--fw-bold);
+  color: var(--gold-primary);
+  line-height: 1;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Size variants */
+.animated-counter--small .animated-counter__value {
+  font-size: var(--text-2xl);
+}
+
+.animated-counter--large .animated-counter__value {
+  font-size: var(--text-5xl);
+}
+
+.animated-counter--xlarge .animated-counter__value {
+  font-size: var(--text-hero);
+}
+
+/* Animation state */
+.animated-counter:not(.is-visible) .animated-counter__value {
+  opacity: 0;
+}
+
+.animated-counter.is-visible .animated-counter__value {
+  animation: counterReveal 0.5s ease forwards;
+}
+
+@keyframes counterReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glow effect */
+.animated-counter--glow .animated-counter__value {
+  text-shadow: 0 0 20px rgba(201, 168, 108, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .animated-counter__value {
+    font-size: var(--text-3xl);
+  }
+
+  .animated-counter--large .animated-counter__value {
+    font-size: var(--text-4xl);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-counter.is-visible .animated-counter__value {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+/* ============================================
+   AnimatedCounter Component Styles
+   ============================================ */
+
+.animated-counter {
+  display: inline-block;
+  position: relative;
+}
+
+.animated-counter__value {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--gold-primary);
+  line-height: 2;
+  
+  /* Ensure consistent width during animation */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Initial state before visible */
+.animated-counter:not(.is-visible) .animated-counter__value {
+  opacity: 0.5;
+}
+
+/* Visible state */
+.animated-counter.is-visible .animated-counter__value {
+  opacity: 1;
+}
